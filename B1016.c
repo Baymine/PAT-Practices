@@ -11,7 +11,7 @@ int Get(char A[], char D) {
         if (A[i] == D) n++;
     }
     //printf("n = %d\n", n);
-    while (n--) {
+    while (n--) {//弄清楚这个过程逻辑
         result += ((int)(D - '0') * pow(10, n));
         //printf("(D-'0') = %d,n = %d;result = %d\n",D - '0',n, result);
     }
