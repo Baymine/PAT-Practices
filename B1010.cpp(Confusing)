@@ -1,0 +1,82 @@
+//注意一点，很多时候在算法当中出现你不熟悉的情况那多半是你对题目的理解还是很不到位导致的。像这道题，你要注意如果系数
+#include<cstdio>
+
+int main(void){
+    //bool flag = true;
+    int coeffient,exponent;
+   
+    //黑盒测试，判断文件结束的标志√
+    while(scanf("%d%d", &coeffient,&exponent) != EOF){
+        //printf("%d %d\n",coeffient,exponent);
+        
+        if(exponent == 0 && coeffient == 0){
+            printf("0 0");
+            //flag = false;
+            break;
+        }
+        else if(exponent != 0){
+            //flag = false;
+            printf("%d %d",coeffient*exponent,exponent-1);
+            if(exponent != 1)printf(" ");
+            printf("exponent = %d \n",exponent);
+        }
+    }
+    return 0;
+    
+}
+
+
+/*
+算法思想：哈希表的思想，利用数组。先用一次循环，完成对数组的更新，然后再输出。
+*/
+/*
+#include<cstdio>
+
+int main(void) {
+	int a[1010] = { 0 };
+	int k, e, count = 0;//系数、指数、不为零的导数项个数
+
+	//传入指数和系数
+	while (scanf("%d%d", &k, &e) != EOF) a[e] = k;//hashTable的思想：a[指数] = 系数 
+	a[0] = 0;//零次项系数求导之后为零
+
+	//从一次项开始，否则后面还没有用的数据会被覆盖
+	for (int i = 1; i <= 1000; ++i) {
+		a[i - 1] = a[i] * i;
+		a[i] = 0;//
+		if (a[i - 1] != 0)count++;//统计不为零的导数项个数
+	}
+
+	if (count == 0)printf("0 0");
+	else {
+		for (int i = 1000; i >= 0; i--) {
+			if (a[i] != 0) {
+				printf("%d %d", a[i], i);
+				count--;
+				if (count != 0) printf(" ");
+			}
+		}
+	}
+	return 0;
+}
+*/
+/*
+#include <iostream>
+using namespace std;
+
+int main() {
+		int a1;
+		int a2;
+		cin >> a1 >> a2;
+		if (a2 == 0){
+			cout << "0 0";
+			return 0;
+		}
+		else{
+			cout << a1 * a2 << ' ' << a2 - 1;
+		}
+		while (cin >> a1 >> a2) {
+			if (a2 != 0) cout << ' ' << a1 * a2 << ' ' << a2 - 1;
+		}
+}
+*/
